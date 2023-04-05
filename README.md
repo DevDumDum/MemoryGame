@@ -1,7 +1,7 @@
 # MemoryGame
-#sgdfag
+
 ## Build Setup
-asdasd
+
 ```bash
 # install dependencies
 $ npm install
