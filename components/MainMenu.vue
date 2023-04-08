@@ -7,29 +7,63 @@ export default {
             uname: ""
         }
     },
+    created() {
+        this.setViewport();
+    },
     methods: {
         setUsername(x){
-            this.$emit('user-name', x);
+            if(x != ""){
+                this.$emit('user-name', x);
+                document.getElementById("uInput").value = "";
+            }else{
+                alert("Invalid user input");
+            }
+        },
+        setViewport: function() {
+            let changeWindowSize = 375
+            let viewportContent = "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+            if (window.innerWidth < changeWindowSize ) {
+                viewportContent = "width=375,user-scalable=no,viewport-fit=cover"
+            }
+            document.querySelector("meta[name='viewport']").setAttribute("content", viewportContent)
         }
+        
     }
 }
 </script>
 
 <template>
-<div>
-    <h1>MemoryGame</h1>
-    <h3>Menu</h3>
-    <div v-if="(userName == '')" style="width: 300px">
-        <form>
-        Username: <input v-model="uname" type="text" required/><br>
-        <button type="submit" @click="setUsername(uname)" style="float:right">Join</button>
-        </form>
+    <div id="mWrapper">
+        <div id="MainMenu">
+            <div id="mContainer">
+                <div id="titleWrapper">
+                    <div class="mTitleContainer">
+                        <img class="mTitle" src="../assets/web/home/MEMORY.png">
+                    </div>
+                    <div class="mTitleContainer">
+                        <img class="mTitle2" src="../assets/web/home/GAME.png">
+                    </div>
+                </div>
+
+                <div v-if="(userName == '')" id="uInputWrapper">
+                    <div id="uInputContainer">
+                        <h2>Username:</h2><input id="uInput" v-model="uname" type="text" required/>
+                    </div>
+                    <div id="uInputButton">
+                        <img src="../assets/web/home/play.png" id="join" @click="setUsername(uname)">
+                    </div>
+                </div>
+                <div v-else>
+                    <h1>Hi {{ userName }}!</h1><br>
+                    <div style="display: flex; justify-content: center;">
+                        <div id="btnWrapper">
+                            <img class="btn" src="../assets/web/home/PLAY.png" @click="$emit('pageS',1)"><br>
+                            <img class="btn" src="../assets/web/home/SCOREBOARD.png" @click="$emit('pageS',2)"><br>
+                            <img class="btn" src="../assets/web/home/EXIT.png" @click="$emit('user-name','')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div v-else>
-        <p>Hi {{ userName }}!</p><br>
-        <button @click="$emit('pageS',1)">Play</button>
-        <button @click="$emit('pageS',2)">Score</button>
-        <button @click="$emit('user-name','')">Exit</button>
-    </div>
-</div>
 </template>
