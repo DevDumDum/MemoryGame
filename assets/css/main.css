@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../web/home/BG.png");
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(25, 3, 47);
+    color: white;
+    font-weight: bold;
+    position: fixed;
+}
+
+h1, h2 {
+    color: white !important;
+}
+
+#mWrapper {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#MainMenu {
+    background-image: url("../web/home/BG2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    padding: 1% 1% 3% 1% ;
+    width: 60%;
+}
+
+#mContainer {
+    margin: 5% 10%;
+    text-align: center;
+}
+
+#closeBtn {
+    width: 6%;
+    float: right;
+    margin: -4% 2% 0 0;
+    cursor: pointer;
+}
+
+/* #join {
+    background-image: url("../web/home/play.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+} */
+
+#titleWrapper {
+    width: 75%;
+    margin-left: 13%;
+    margin-top: 10%;
+}
+
+.mTitle {
+    width: 70%;
+}
+
+.mTitle2 {
+    width: 50%;
+}
+
+.btn {
+    cursor: pointer;
+    width: 100%;
+}
+
+#uInputWrapper{
+    margin-top: 13.7%;
+}
+#btnWrapper{
+    width: 40%;
+}
+
+.mTitleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#MainMenu input {
+    border-radius: 10px;
+    width: 45%;
+    margin-left: 1%;
+    padding-left: 1%;
+    background-color: rgb(10, 10, 73);
+}
+
+#uInputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#uInputContainer h2 {
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+#uInputButton {
+    margin-top: 5%;
+    display: flex;
+    justify-content: right;
+}
+
+#uInputButton img{
+    width: 30%;
+    cursor: pointer;
+    margin: 0% 5% 5% 0%;
+}
+
+
+.image-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #124354;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .image-button img {
+    height: 20px;
+    margin-right: 10px;
+  }
+
+
+  #difficulty {
+    padding: 7% 0;
+    display: flex;
+    justify-content: center;
+  }
+  #difficulty img {
+    margin: 5% 0;
+  }
+
+  @media screen and (max-width: 690px){
+    #MainMenu {
+        width: auto;
+    }
+  }
