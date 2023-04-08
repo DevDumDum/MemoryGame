@@ -51,13 +51,29 @@ h1, h2 {
     background-repeat: no-repeat;
     background-size: contain;
 } */
-
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-4 {
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+  }
+  .col-4 h3{
+    color: white;
+    font-size: 25px;
+  }
 #titleWrapper {
     width: 75%;
     margin-left: 13%;
     margin-top: 10%;
 }
-
+.scorehead tr th{
+    margin: 30%;
+    padding: 90%;
+}
 .mTitle {
     width: 70%;
 }
