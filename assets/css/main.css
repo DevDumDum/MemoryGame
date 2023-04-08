@@ -24,6 +24,37 @@ h1, h2 {
     align-items: center;
 }
 
+.greeting h1{
+    /* text-transform: uppercase; */
+    background-image: linear-gradient(
+      -225deg,
+      #74e1f1 0%,
+      #8bf784 29%,
+      #f0f67f 67%,
+      #f58376 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 30px;
+    font-style: oblique;
+}
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+  #uInputContainer h2{
+    font-size: 26px;
+    font-style: oblique;
+  }
 #MainMenu {
     background-image: url("../web/home/BG2.png");
     background-position: center;
@@ -76,6 +107,7 @@ h1, h2 {
 }
 .mTitle {
     width: 70%;
+    padding: 1rem;
 }
 
 .mTitle2 {
@@ -93,7 +125,9 @@ h1, h2 {
 #btnWrapper{
     width: 40%;
 }
-
+#btnWrapper img{
+    padding: 1.5%;
+}
 .mTitleContainer {
     display: flex;
     justify-content: center;
