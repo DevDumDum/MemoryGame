@@ -38,10 +38,10 @@ export default {
             <div id="mContainer">
                 <div id="titleWrapper">
                     <div class="mTitleContainer">
-                        <img class="mTitle" src="../assets/web/home/MEMORY.png">
+                        <img class="mTitle" src="../assets/web/firstpage/MEMORY.png">
                     </div>
                     <div class="mTitleContainer">
-                        <img class="mTitle2" src="../assets/web/home/GAME.png">
+                        <img class="mTitle2" src="../assets/web/firstpage/GAME.png">
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@ export default {
                         <h2>Username:</h2><input id="uInput" v-model="uname" type="text" required/>
                     </div>
                     <div id="uInputButton">
-                        <img src="../assets/web/home/play.png" id="join" @click="setUsername(uname)">
+                        <img src="../assets/web/firstpage/JOINBUTTON.png" id="join" @click="setUsername(uname)">
                     </div>
                 </div>
                 <div v-else>

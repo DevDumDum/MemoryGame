@@ -38,6 +38,13 @@ h1, h2 {
     text-align: center;
 }
 
+#closeBtn {
+    width: 6%;
+    float: right;
+    margin: -4% 2% 0 0;
+    cursor: pointer;
+}
+
 /* #join {
     background-image: url("../web/home/play.png");
     background-position: center;
@@ -65,7 +72,7 @@ h1, h2 {
 }
 
 #uInputWrapper{
-    margin-top: 14.5%;
+    margin-top: 13.7%;
 }
 #btnWrapper{
     width: 40%;
@@ -121,6 +128,16 @@ h1, h2 {
   .image-button img {
     height: 20px;
     margin-right: 10px;
+  }
+
+
+  #difficulty {
+    padding: 7% 0;
+    display: flex;
+    justify-content: center;
+  }
+  #difficulty img {
+    margin: 5% 0;
   }
 
   @media screen and (max-width: 690px){
