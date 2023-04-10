@@ -33,7 +33,8 @@
                 ],
                 gameStarted: false,
                 randomItems: [],
-                shuffleItems: []
+                shuffleItems: [],
+                size: null
             }
         },
         methods: {
