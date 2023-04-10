@@ -10,6 +10,7 @@
             class="card"
             :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
             @click="showCard(item.name, index)">
+            <!-- image here -->
             {{ index }}
             {{ item.name }}
         </div>
@@ -31,7 +32,14 @@
                 minutes: 0,
                 seconds: 0,
                 clearTimer: null,
-                isTimerRunning: true
+                isTimerRunning: true,
+
+                // Players time
+                playerTime: null,
+
+                // Player score
+                score: 0
+
             }
         },
         mounted() {
@@ -51,8 +59,8 @@
                     this.flippedCard.push(index)
 
                     if(this.firstCard === this.secondCard){
-
                         this.selectedCard.push(value) 
+                        this.score += 1
                         console.log("Matched!")
                         this.flippedCard = []
 
@@ -66,7 +74,18 @@
                     this.secondCard = null
                     
                     if(this.selectedCard.length == this.items.length / 2){
-                        console.log("You won")
+
+                        this.playerWon = true
+
+                        clearInterval(this.clearTimer);
+                        this.playerTime = this.timer
+
+                        this.selectedCard = []
+                    
+                        this.$emit('winner', this.playerWon, this.playerTime, this.score)
+                        
+                        this.playerTime = null 
+                        this.score = null
                     }
                 }
                 // this.selectedCard.push(value)
