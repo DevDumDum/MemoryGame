@@ -97,8 +97,10 @@ h1, h2 {
     background-image: url("../web/paused/BG.png");
     /* background-size: 900px; */
     background-size: cover;
-    width: 55%;
+    width: 62%;
      height: 55%;
+     /* width: 85%;
+     height: auto; */
     background-repeat: no-repeat;
     /* width: auto;
     height: auto; */
@@ -164,12 +166,12 @@ h1, h2 {
     color: black;
   }
   
-  .modal-buttons .no{
+  /* .modal-buttons .no{
     background-color: #C64355;
   }
   .modal-buttons .yes{
     background-color: #8DC942;
-  }
+  } */
 
   .w3-button{
     border-radius: 12px;
@@ -396,7 +398,7 @@ h1, h2 {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 91.9%;
+        width: 91.8%;
         height: auto;
         background-repeat: no-repeat;
         font-size: 15px;
