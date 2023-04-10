@@ -53,7 +53,7 @@ export default {
                         <img src="../assets/web/firstpage/JOINBUTTON.png" id="join" @click="setUsername(uname)">
                     </div>
                 </div>
-                <div v-else>
+                <div v-else class="greeting">
                     <h1>Hi {{ userName }}!</h1><br>
                     <div style="display: flex; justify-content: center;">
                         <div id="btnWrapper">
