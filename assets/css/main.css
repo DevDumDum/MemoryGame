@@ -64,6 +64,114 @@ h1, h2 {
     width: 60%;
 }
 
+#modalWrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#bgModal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,.7);
+  cursor: pointer;
+  
+}
+
+.modal {
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    margin: auto;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../web/paused/BG.png");
+    /* background-size: 900px; */
+    background-size: cover;
+    width: 55%;
+     height: 55%;
+    background-repeat: no-repeat;
+    /* width: auto;
+    height: auto; */
+    font-size: 15pxpx;
+    /* background-position: center top; */
+    /* background-position-x: 50%;
+    background-position-y: 50%; */
+  }
+  
+  .pausebutton{
+    border-radius: 12px;
+    background-color: #f58376; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    }
+    .pausebutton:hover{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+  
+ 
+/* .resume img{
+    display: flex;
+    justify-content: center;
+} */
+.back{
+    width: 10%;
+    float: left;
+    margin: -4% 2% 0 0;
+    cursor: pointer;
+
+}
+  .modal-content h2{
+   background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    color:#124354
+  }
+  .modal-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+ 
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .pausewindow button{
+    color: black;
+  }
+  
+  .modal-buttons .no{
+    background-color: #C64355;
+  }
+  .modal-buttons .yes{
+    background-color: #8DC942;
+  }
+
+
 #mContainer {
     margin: 5% 10%;
     text-align: center;
