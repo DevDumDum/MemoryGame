@@ -66,7 +66,9 @@
                     this.secondCard = null
                     
                     if(this.selectedCard.length == this.items.length / 2){
+                        this.toggleTimer()
                         console.log("You won")
+                        console.log(this.timer)
                     }
                 }
                 // this.selectedCard.push(value)
