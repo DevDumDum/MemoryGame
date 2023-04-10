@@ -15,26 +15,30 @@
         </div>
 
         <button class="pausebutton" @click="toggleTimer">Pause Game</button>
-
         <div v-if="pauseS" id="modalWrapper">
             <div id="bgModal" @click="toggleTimer" ></div>
             <div class="modal">
                 <div class="modal-content">
-                            <!-- <h2>Game Paused</h2> -->
-                            <!-- <img class="pause" src="../assets/web/paused/BG.png" @click="showModal = true"><br> -->
-                            <!-- <img src="../assets/web/paused/BG.png" alt=""> -->
                     <div class="modal-image"> 
                         <div class="resume">
                             <img src="../assets/web/paused/PAUSE.png">
                         </div>
-                        <p><i>The game is paused. Click back button to resume. Click close button to exit</i></p>
+                        <p><i>The game is paused. Click back button to resume.</i></p>
                         <div class="modal-buttons">
-                            <img class="back" src="../assets/web/paused/BACK.png" @click="toggleTimer"><br>
-                            <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png">
-                            <!-- <button class="no" @click="showModal = false">No</button>
-                            <button class="yes" @click="resumeGame()">Yes</button> -->
+                            <img class="back" src="../assets/web/paused/BACK.png" @click="toggleTimer">
+                            <!-- <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png"> -->
                         </div>
-                    </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+            <div class="modal-gameover">
+                <button @click="toggleTimer" class="w3-button">Gameover</button>
+            <div>
+                <div>
+                    <header> 
+                        <span @click="toggleTimer"></span>
+                    </header>
                 </div>
             </div>
         </div>
