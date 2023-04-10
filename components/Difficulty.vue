@@ -1,7 +1,9 @@
 <template>
     <div id="mWrapper">
         <div id="MainMenu">
-            <img @click="$emit('pageS',0)" id="closeBtn" src="../assets/web/playisclicked/close.png">
+            <span id="menuBtn">
+                <img @click="$emit('pageS',0)" id="closeBtn" src="../assets/web/playisclicked/close.png">
+            </span>
             <div id="mContainer">
                 <div id="difficulty">
                     <div v-if="!gameStarted" id="btnWrapper">
@@ -10,31 +12,9 @@
                         <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="$emit('pageS',1)"><br>
                         <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
                     </div>
-                      <div v-else class="pausewindow">
-                            <Card :items="shuffleItems"/>
-                            
-                        <br><button class="pausebutton" @click="showModal = true">Pause Game</button>
-                    <div v-if="showModal" class="modal">
-                        <div class="modal-content">
-                                <!-- <h2>Game Paused</h2> -->
-                                <!-- <img class="pause" src="../assets/web/paused/BG.png" @click="showModal = true"><br> -->
-                                <!-- <img src="../assets/web/paused/BG.png" alt=""> -->
-                                <div class="modal-image"> 
-                                    <div class="resume">
-                                         <img src="../assets/web/paused/PAUSE.png">
-                                    </div>
-                                    <p><i>The game is paused. Click back button to resume. Click close button to exit</i></p>
-                            <div class="modal-buttons">
-                                <img class="back" src="../assets/web/paused/BACK.png" @click="showModal = false"><br>
-                                <img class="back" @click="$emit('pageS',0)" src="../assets/web/playisclicked/close.png">
-                                <!-- <button class="no" @click="showModal = false">No</button>
-                                <button class="yes" @click="resumeGame()">Yes</button> -->
-                            </div>
-                        </div>
-                        </div>
+                    <div v-else class="pausewindow">
+                        <Card :items="shuffleItems"/>
                     </div>
-                      </div>
-                      
                 </div>
             </div>
             
@@ -61,8 +41,7 @@
                 gameStarted: false,
                 randomItems: [],
                 shuffleItems: [],
-                size: null,
-                showModal: false,
+                size: null
             }
         },
         methods: {
@@ -82,10 +61,6 @@
                 this.shuffleItems.sort(() => Math.random() -0.5)
                 return this.shuffleItems
             },
-            resumeGame() {
-            // Code to resume the game
-            this.showModal = false;
-    },
         }
     }
 </script>

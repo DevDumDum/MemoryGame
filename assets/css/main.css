@@ -64,12 +64,32 @@ h1, h2 {
     width: 60%;
 }
 
+#modalWrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#bgModal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,.7);
+  cursor: pointer;
+  
+}
+
 .modal {
-    position: fixed;
+    /* position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; */
+    margin: auto;
     z-index: 9999;
     display: flex;
     justify-content: center;

@@ -13,6 +13,31 @@
             {{ index }}
             {{ item.name }}
         </div>
+
+        <button class="pausebutton" @click="toggleTimer">Pause Game</button>
+
+        <div v-if="pauseS" id="modalWrapper">
+            <div id="bgModal" @click="toggleTimer" ></div>
+            <div class="modal">
+                <div class="modal-content">
+                            <!-- <h2>Game Paused</h2> -->
+                            <!-- <img class="pause" src="../assets/web/paused/BG.png" @click="showModal = true"><br> -->
+                            <!-- <img src="../assets/web/paused/BG.png" alt=""> -->
+                    <div class="modal-image"> 
+                        <div class="resume">
+                            <img src="../assets/web/paused/PAUSE.png">
+                        </div>
+                        <p><i>The game is paused. Click back button to resume. Click close button to exit</i></p>
+                        <div class="modal-buttons">
+                            <img class="back" src="../assets/web/paused/BACK.png" @click="toggleTimer"><br>
+                            <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png">
+                            <!-- <button class="no" @click="showModal = false">No</button>
+                            <button class="yes" @click="resumeGame()">Yes</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -31,7 +56,8 @@
                 minutes: 0,
                 seconds: 0,
                 clearTimer: null,
-                isTimerRunning: true
+                isTimerRunning: true,
+                pauseS: false
             }
         },
         mounted() {
@@ -66,6 +92,7 @@
                     this.secondCard = null
                     
                     if(this.selectedCard.length == this.items.length / 2){
+                        toggleTimer;
                         console.log("You won")
                     }
                 }
@@ -86,24 +113,26 @@
                 },
                 
             toggleTimer() {
-            if (this.isTimerRunning) {
-                clearInterval(this.clearTimer);
-                this.isTimerRunning = false;
-            } else {
-                this.isTimerRunning = true;
-                this.clearTimer = setInterval(() => {
-                this.seconds += 1;
-                if (this.seconds >= 60) {
-                    this.minutes += 1;
-                    this.seconds = 0;
-                }
+                if (this.isTimerRunning) {
+                    clearInterval(this.clearTimer);
+                    this.isTimerRunning = false;
+                    this.pauseS = true;
+                } else {
+                    this.isTimerRunning = true;
+                    this.clearTimer = setInterval(() => {
+                    this.seconds += 1;
+                    if (this.seconds >= 60) {
+                        this.minutes += 1;
+                        this.seconds = 0;
+                    }
 
-                let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
-                let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes; 
-                this.timer = `${minutesValue}:${secondsValue}`;
-                }, 1000);
+                    let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
+                    let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes; 
+                    this.timer = `${minutesValue}:${secondsValue}`;
+                    }, 1000);
+                    this.pauseS = false;
+                }
             }
-            },
         }
         
     }
