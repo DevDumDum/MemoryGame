@@ -47,7 +47,6 @@ export default {
         setDifficulty(row, col, difficulty){
             this.gameStarted = true;
             this.generateRandom(row, col, difficulty);
-            this.inPlay = true;
         },
         generateRandom(row, col, difficulty){
             let tempArray = [...this[difficulty]]
@@ -83,7 +82,7 @@ export default {
 </script>
 
 <template>
-    <div id="mWrapper" v-if="!inPlay">
+    <div id="mWrapper" v-if="!gameStarted">
         <div id="MainMenu">
             <div id="mContainer">
                 <div id="titleWrapper">
@@ -117,5 +116,5 @@ export default {
             </div>
         </div>
     </div>
-    <Difficulty v-else/>
+    <Difficulty v-else :items="shuffleItems"/>
 </template>

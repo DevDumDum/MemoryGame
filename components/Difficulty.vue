@@ -10,10 +10,10 @@
                         <h1>Time: {{ time }}</h1>
                         <p>Score: {{ score }}</p>
                     </div>
-                    <div v-if="!gameStarted" id="btnWrapper">
+                    <!-- <div v-if="!gameStarted" id="btnWrapper">
                         <img class="btn" src="../assets/web/playisclicked/EASY.png" @click="setDifficulty(4, 4, 'easy')"><br>
                         <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
-                    </div>
+                    </div> -->
                     <div v-else class="pausewindow">
                         
                         <button class="pausebutton" @click="toggleTimer">Pause Game</button>
@@ -69,6 +69,7 @@
 
 <script>
     export default {
+        props: ['items'],
         data(){
             return{
                 selectedCard: [],
@@ -194,7 +195,7 @@
                     this.firstCard = null
                     this.secondCard = null
                     
-                    if(this.selectedCard.length == this.shuffleItems.length / 2){
+                    if(this.selectedCard.length == this.items.length / 2){
 
                         this.playerWon = true
 
