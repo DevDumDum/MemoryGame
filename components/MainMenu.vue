@@ -47,7 +47,7 @@ export default {
 
                 <div v-if="(userName == '')" id="uInputWrapper">
                     <div id="uInputContainer">
-                        <h2>Username:</h2><input id="uInput" v-model="uname" type="text" required/>
+                        <h2>Username:</h2><input id="uInput" v-model="uname" type="text" required autocomplete="off"/>
                     </div>
                     <div id="uInputButton">
                         <img src="../assets/web/firstpage/JOINBUTTON.png" id="join" @click="setUsername(uname)">

@@ -9,10 +9,9 @@
                 v-for="(item, index) in items"
                 :key="index"
                 class="card"
-                :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }, item.name]"
+                :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
                 @click="showCard(item.name, index)">
-                {{ index }}
-                {{ item.name }}
+                <div class="cardLogo" :class="item.name"></div>
             </div>
         </div>
 

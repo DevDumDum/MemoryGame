@@ -9,6 +9,46 @@
     flex: 1 1 15em;
     height: 15em;
     width: 10em;
+    justify-content: center;
+    display: flex;
+    background-color: #f1f1f1;
+    border-radius: 1rem;
+    border: .3rem #464068 solid;
 }
 
+.cardLogo {
+    margin:auto;
+    height: 50%;
+    width: 50%;
+    background-size: 100% 100%;
+}
 
+.APPLE {
+    background-image: url("../cards/easy/APPLE.png");
+}
+
+.BANANA {
+    background-image: url("../cards/easy/BANANA.png");
+}
+
+.CHERRY {
+    background-image: url("../cards/easy/CHERRY.png");
+}
+
+.GRAPES {
+    background-image: url("../cards/easy/GRAPES.png");
+}
+
+.LEMON {
+    background-image: url("../cards/easy/LEMON.png");
+}
+.ORANGE {
+    background-image: url("../cards/easy/ORANGE.png");
+}
+
+.PEACH {
+    background-image: url("../cards/easy/PEACH.png");
+}
+.WATERMELON {
+    background-image: url("../cards/easy/WATERMELON.png");
+}
