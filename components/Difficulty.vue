@@ -1,64 +1,59 @@
 <template>
-    <div id="mWrapper">
-        <div id="MainMenu">
-            <span id="menuBtn">
-                <img @click="$emit('pageS',0)" id="closeBtn" src="../assets/web/playisclicked/close.png">
-            </span>
-            <div id="mContainer">
-                <div id="difficulty">
-                    <div v-if="isPlayerWon && !gameStarted">
-                        <h1>Time: {{ time }}</h1>
-                        <p>Score: {{ score }}</p>
-                    </div>
-                    <!-- <div v-if="!gameStarted" id="btnWrapper">
-                        <img class="btn" src="../assets/web/playisclicked/EASY.png" @click="setDifficulty(4, 4, 'easy')"><br>
-                        <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
-                    </div> -->
-                    <div v-else class="pausewindow">
+    <div id="mContainer">
+        <div id="difficulty">
+            <div>
+                <img class="pausebutton" @click="toggleTimer" src="../assets/web/easy/PAUSE.png">
+                <div class="timer">
+                    <p>Timer: {{ timer }}</p>
+                </div>
+                <div id="CardWrapper">
+                    <div 
+                        v-for="(item, index) in items"
+                        :key="index"
+                        class="card"
+                        :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
+                        @click="showCard(item.name, index)">
                         
-                        <button class="pausebutton" @click="toggleTimer">Pause Game</button>
-                        <div class="timer">
-                            <p>Timer: {{ timer }}</p>
+                        <div class="cardHidden mainCard"></div>
+                        <div class="cardShown mainCard">
+                            <img class="cardLogo" :class="item.name" :src="require(`@/assets/cards/easy/${item.image}`)">
                         </div>
-                        <div id="CardWrapper">
-                            <div 
-                                v-for="(item, index) in items"
-                                :key="index"
-                                class="card"
-                                :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
-                                @click="showCard(item.name, index)">
-                                
-                                <div class="cardHidden mainCard"></div>
-                                <div class="cardShown mainCard">
-                                    <div class="cardLogo" :class="item.name"></div>
+                    </div>
+                </div>
+
+                <div v-if="pauseS" id="modalWrapper">
+                    <div id="bgModal" @click="toggleTimer" ></div>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <div class="modal-image"> 
+                                <div class="resume">
+                                    <img src="../assets/web/paused/PAUSE.png">
                                 </div>
-                            </div>
+                                <p><i>The game is paused. Click back button to resume.</i></p>
+                                <div class="modal-buttons">
+                                    <img class="back" src="../assets/web/paused/BACK.png" @click="toggleTimer">
+                                    <!-- <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png"> -->
+                                </div>
+                            </div> 
                         </div>
-                        <div v-if="pauseS" id="modalWrapper">
-                            <div id="bgModal" @click="toggleTimer" ></div>
-                            <div class="modal">
-                                <div class="modal-content">
-                                    <div class="modal-image"> 
-                                        <div class="resume">
-                                            <img src="../assets/web/paused/PAUSE.png">
-                                        </div>
-                                        <p><i>The game is paused. Click back button to resume.</i></p>
-                                        <div class="modal-buttons">
-                                            <img class="back" src="../assets/web/paused/BACK.png" @click="toggleTimer">
-                                            <!-- <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png"> -->
-                                        </div>
-                                    </div> 
+                    </div>
+                </div>
+                
+                <div v-if="isPlayerWon != null" id="modalWrapper">
+                    <div id="bgModal"  @click="exit()"></div>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <div class="modal-image"> 
+                                <div class="resume">
+                                    <img src="../assets/web/levelcomplete/LEVEL COMPLETE.png">
+                                        <h1>Time: {{ time }}</h1>
+                                        <h1>Score: {{ steps }}</h1>
                                 </div>
-                                <div class="modal-gameover">
-                                    <div>
-                                        <div>
-                                            <header> 
-                                                <span @click="toggleTimer"></span>
-                                            </header>
-                                        </div>
-                                    </div>
+                                <div class="modal-buttons">
+                                    <img class="back" src="../assets/web/gameover/EXIT.png" @click="exit()">
+                                    <!-- <img class="back" @click="toggleTimer" src="../assets/web/playisclicked/close.png"> -->
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -68,8 +63,11 @@
 </template>
 
 <script>
+import HighScore from './HighScore.vue';
+
     export default {
-        props: ['items'],
+        props: ['items','uName'],
+        //emits: ['highScore'],
         data(){
             return{
                 selectedCard: [],
@@ -87,6 +85,7 @@
 
                 // Players time
                 playerTime: null,
+                pauseS: false,
 
                 // Player score
                 score: 0,
@@ -119,13 +118,7 @@
                 //     {name: 'PARROT', image: 'PARROT.png'},
                 //     {name: 'PENGUIN', image: 'PENGUIN.png'},
                 //     {name: 'TOUCAN', image: 'TOUCAN.png'}
-                // ],
-                medium: [   
-                    ,
-                ],
-                hard: [
-
-                ],
+                // ]
                 //gameStarted: false,
                 // randomItems: [],
                 // shuffleItems: [],
@@ -133,7 +126,14 @@
 
                 isPlayerWon: null,
                 time: null,
-                score: null
+                score: null,
+                pAgain: false,
+                steps: 0,
+                upScore: {
+                    name: null,
+                    time: null,
+                    steps: null
+                }
         
             }
         },
@@ -158,7 +158,15 @@
             //     this.shuffleItems.sort(() => Math.random() -0.5)
             //     return this.shuffleItems
             // },
-            playerWon(isPlayerWon, time, score){
+            exit(){
+                this.gameStarted = false;
+                this.$emit("gStatus", this.gameStarted);
+            },
+            playAgain(){
+                this.pAgain = true;
+                this.$emit("pButton", this.pAgain);
+            },
+            playerWonF(isPlayerWon, time, score){
                 this.isPlayerWon = isPlayerWon
                 this.time = time
                 this.score = score
@@ -170,44 +178,53 @@
 
             //============================================================
             showCard(value, index){
-                if(!this.firstCard){
+                if(!this.flippedCard.includes(index) && !this.selectedCard.includes(value)){
 
-                    this.firstCard = value
-                    this.flippedCard.push(index)
+                    if(!this.firstCard){
 
-                }else if(!this.secondCard){
-                    
-                    this.secondCard = value
-                    this.flippedCard.push(index)
-
-                    if(this.firstCard === this.secondCard){
-                        this.selectedCard.push(value) 
-                        this.score += 1
-                        console.log("Matched!")
-                        this.flippedCard = []
-
-                    }else{
-                        console.log("Not matched!")
-                        setTimeout(() => {
-                            this.flippedCard = []
-                        }, 1000)    
-                    }
-                    this.firstCard = null
-                    this.secondCard = null
-                    
-                    if(this.selectedCard.length == this.items.length / 2){
-
-                        this.playerWon = true
-
-                        clearInterval(this.clearTimer);
-                        this.playerTime = this.timer
-
-                        this.selectedCard = []
-                    
-                        //this.$emit('winner', this.playerWon, this.playerTime, this.score)
+                        this.firstCard = value
+                        this.flippedCard.push(index)
+                        console.log(this.steps);
+                    }else if(!this.secondCard){
                         
-                        this.playerTime = null 
-                        this.score = null
+                        this.secondCard = value
+                        this.flippedCard.push(index)
+
+                        if(this.firstCard === this.secondCard){
+                            this.selectedCard.push(value) 
+                            this.score += 1
+                            console.log("Matched!")
+                            this.flippedCard = []
+
+                        }else{
+                            console.log("Not matched!")
+                            setTimeout(() => {
+                                this.flippedCard = []
+                            }, 500)    
+                        }
+                        this.steps+=1;
+                        console.log(this.steps);
+                        this.firstCard = null
+                        this.secondCard = null
+                        
+                        if(this.selectedCard.length == this.items.length / 2){
+                            this.playerWon = true
+                            clearInterval(this.clearTimer);
+                            this.playerTime = this.timer
+
+                            this.selectedCard = []
+                            this.upScore.name = this.uName;
+                            this.upScore.time = this.playerTime;
+                            this.upScore.steps = this.steps;
+
+                            this.$emit("highscore", this.upScore);
+
+                            this.playerWonF(this.playerWon, this.playerTime, this.steps);
+
+                            //this.$emit('winner', this.playerWon, this.playerTime, this.score)
+                            this.playerTime = null 
+                            this.score = null
+                        }
                     }
                 }
                 // this.selectedCard.push(value)

@@ -1,7 +1,7 @@
 <script>
 export default {
     props: ['pagestatus','userName'],
-    emits: ['user-name'],
+    emits: ['user-name',],
     data(){
         return{
             easy: [
@@ -37,13 +37,25 @@ export default {
             gameStarted: false,
             randomItems: [],
             shuffleItems: [],
-            inPlay: false
+            inPlay: false,
+            rePlay: null,
+            highScore: [],
         }
     },
     created() {
         this.setViewport();
     },
     methods: {
+        setHighScore(x){
+            this.highScore = x;
+            this.$emit('mainhighscore', this.highScore);
+        },        
+        playStatusAgain(x){
+            this.rePlay = x;
+            if(this.rePlay == true){
+                this.setDifficulty(2, 2, 'easy');
+            }
+        },
         setDifficulty(row, col, difficulty){
             this.gameStarted = true;
             this.generateRandom(row, col, difficulty);
@@ -75,6 +87,12 @@ export default {
                 viewportContent = "width=375,user-scalable=no,viewport-fit=cover"
             }
             document.querySelector("meta[name='viewport']").setAttribute("content", viewportContent)
+        },
+        gameExit(){
+            this.gameStarted = false;
+            this.inPlay = false;
+            this.randomItems= [];
+            this.shuffleItems= [];
         }
         
     }
@@ -82,9 +100,12 @@ export default {
 </script>
 
 <template>
-    <div id="mWrapper" v-if="!gameStarted">
+    <div id="mWrapper">
         <div id="MainMenu">
-            <div id="mContainer">
+            <span id="menuBtn" v-if="gameStarted">
+                <img @click="gameExit()" id="closeBtn" src="../assets/web/playisclicked/close.png">
+            </span>
+            <div id="mContainer" v-if="!gameStarted">
                 <div id="titleWrapper">
                     <div class="mTitleContainer">
                         <img class="mTitle" src="../assets/web/firstpage/MEMORY.png">
@@ -114,7 +135,8 @@ export default {
                     </div>
                 </div>
             </div>
+
+            <Difficulty v-else :items="shuffleItems" @gStatus = "gameExit" :uName="userName" @highscore="setHighScore"/>
         </div>
     </div>
-    <Difficulty v-else :items="shuffleItems"/>
 </template>
