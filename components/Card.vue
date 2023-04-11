@@ -28,9 +28,10 @@
                 flippedCard: [],
 
                 // Timer Variable
-                timer: '00:00',
+                timer: '00:00:00',
                 minutes: 0,
                 seconds: 0,
+                milliSeconds: 0,
                 clearTimer: null,
                 isTimerRunning: true,
 
@@ -92,17 +93,26 @@
             },
             timeGenerator() {
                 this.clearTimer = setInterval(() => {
-                    this.seconds += 1;
+
+                    this.milliSeconds += 10; 
+
+                    if (this.milliSeconds >= 1000) {
+                        this.seconds += 1;
+                        this.milliSeconds = 0;
+                    }
+
                     if (this.seconds >= 60) {
                     this.minutes += 1;
                     this.seconds = 0;
                     }
 
-                    let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
-                    let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes; 
-                    this.timer = `${minutesValue}:${secondsValue}`;
-                }, 1000);
-                },
+                    let milliSecondsValue = `${this.milliSeconds / 10}`
+
+                    let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds
+                    let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes 
+                    this.timer = `${minutesValue}:${secondsValue}:${milliSecondsValue}`
+                }, 10);
+            },
                 
             toggleTimer() {
             if (this.isTimerRunning) {
@@ -111,16 +121,25 @@
             } else {
                 this.isTimerRunning = true;
                 this.clearTimer = setInterval(() => {
-                this.seconds += 1;
-                if (this.seconds >= 60) {
-                    this.minutes += 1;
-                    this.seconds = 0;
+
+                this.milliSeconds += 10; 
+
+                if (this.milliSeconds >= 1000) {
+                    this.seconds += 1;
+                    this.milliSeconds = 0;
                 }
 
-                let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
-                let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes; 
-                this.timer = `${minutesValue}:${secondsValue}`;
-                }, 1000);
+                if (this.seconds >= 60) {
+                this.minutes += 1;
+                this.seconds = 0;
+                }
+
+                let milliSecondsValue = `${this.milliSeconds / 10}`
+
+                let secondsValue = this.seconds < 10 ? `0${this.seconds}` : this.seconds
+                let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes 
+                this.timer = `${minutesValue}:${secondsValue}:${milliSecondsValue}`
+                }, 10);
             }
             },
         }
