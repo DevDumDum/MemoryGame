@@ -8,8 +8,8 @@
                 <div id="difficulty">
                     <div v-if="!gameStarted" id="btnWrapper">
                         <img class="btn" src="../assets/web/playisclicked/EASY.png" @click="setDifficulty(2, 4)"><br>
-                        <img class="btn" src="../assets/web/playisclicked/HARD.png" @click="setDifficulty(2, 4)"><br>
-                        <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="$emit('pageS',1)"><br>
+                        <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="setDifficulty(3, 6)"><br>
+                        <img class="btn" src="../assets/web/playisclicked/HARD.png" @click="setDifficulty(4, 8)"><br>
                         <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
                     </div>
                     <div v-else class="pausewindow">
