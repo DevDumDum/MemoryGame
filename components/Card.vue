@@ -1,8 +1,8 @@
 <template>
-    <div>   
+    <div>
+        <button class="pausebutton" @click="toggleTimer">Pause Game</button>
         <div class="timer">
             <p>Timer: {{ timer }}</p>
-            <button @click="toggleTimer">{{ isTimerRunning ? 'Pause' : 'Start' }}</button>
         </div>
         <div id="CardWrapper">
             <div 
@@ -18,8 +18,6 @@
                 </div>
             </div>
         </div>
-
-        <button class="pausebutton" @click="toggleTimer">Pause Game</button>
         <div v-if="pauseS" id="modalWrapper">
             <div id="bgModal" @click="toggleTimer" ></div>
             <div class="modal">
@@ -35,15 +33,14 @@
                         </div>
                     </div> 
                 </div>
-            </div>
-        </div>
-            <div class="modal-gameover">
-                <button @click="toggleTimer" class="w3-button">Gameover</button>
-            <div>
-                <div>
-                    <header> 
-                        <span @click="toggleTimer"></span>
-                    </header>
+                <div class="modal-gameover">
+                    <div>
+                        <div>
+                            <header> 
+                                <span @click="toggleTimer"></span>
+                            </header>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,6 +52,7 @@
         props: ['items'],
         data(){
             return{
+                
                 selectedCard: [],
                 firstCard: null,
                 secondCard: null,
@@ -151,6 +149,7 @@
             if (this.isTimerRunning) {
                 clearInterval(this.clearTimer);
                 this.isTimerRunning = false;
+                this.pauseS = true;
             } else {
                 this.isTimerRunning = true;
                 this.clearTimer = setInterval(() => {
@@ -173,6 +172,7 @@
                 let minutesValue = this.minutes < 10 ? `0${this.minutes}` : this.minutes 
                 this.timer = `${minutesValue}:${secondsValue}:${milliSecondsValue}`
                 }, 10);
+                this.pauseS = false;
             }
             },
         }

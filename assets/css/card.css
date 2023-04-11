@@ -8,8 +8,8 @@
 
 .card {
     flex: 1 1 15em;
-    height: 15em;
-    width: 10em;
+    height: 10em;
+    width: 5em;
     display: flex;
     justify-content: center;
 }
