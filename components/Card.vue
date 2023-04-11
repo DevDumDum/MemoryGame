@@ -4,14 +4,16 @@
             <p>Timer: {{ timer }}</p>
             <button @click="toggleTimer">{{ isTimerRunning ? 'Pause' : 'Start' }}</button>
         </div>
-        <div 
-            v-for="(item, index) in items"
-            :key="index"
-            class="card"
-            :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
-            @click="showCard(item.name, index)">
-            {{ index }}
-            {{ item.name }}
+        <div id="CardWrapper">
+            <div 
+                v-for="(item, index) in items"
+                :key="index"
+                class="card"
+                :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }, item.name]"
+                @click="showCard(item.name, index)">
+                {{ index }}
+                {{ item.name }}
+            </div>
         </div>
 
         <button class="pausebutton" @click="toggleTimer">Pause Game</button>
