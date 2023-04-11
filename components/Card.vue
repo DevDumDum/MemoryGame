@@ -11,7 +11,11 @@
                 class="card"
                 :class="[{'matched' : selectedCard.includes(item.name)}, { 'flipped' : flippedCard.includes(index) }]"
                 @click="showCard(item.name, index)">
-                <div class="cardLogo" :class="item.name"></div>
+                
+                <div class="cardHidden mainCard"></div>
+                <div class="cardShown mainCard">
+                    <div class="cardLogo" :class="item.name"></div>
+                </div>
             </div>
         </div>
 

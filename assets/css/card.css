@@ -9,17 +9,41 @@
     flex: 1 1 15em;
     height: 15em;
     width: 10em;
-    justify-content: center;
+}
+
+.card .cardHidden {
     display: flex;
+}
+
+.card .cardShown {
+    display: none;
+}
+
+.flipped .cardHidden {
+    display: none;
+}
+
+.flipped .cardShown {
+    display: flex;
+}
+
+.mainCard {
+    justify-content: center;
     background-color: #f1f1f1;
     border-radius: 1rem;
     border: .3rem #464068 solid;
+    height: 100%;
 }
 
 .cardLogo {
     margin:auto;
     height: 50%;
     width: 50%;
+    background-size: 100% 100%;
+}
+
+.cardHidden {
+    background-image: url("../cards/backcard/cardback.png");
     background-size: 100% 100%;
 }
 
