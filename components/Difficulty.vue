@@ -5,6 +5,7 @@
                 <img class="pausebutton" @click="toggleTimer" src="../assets/web/easy/PAUSE.png">
                 <div class="timer">
                     <p>Timer: {{ timer }}</p>
+                    <p>Score: {{ steps }}</p>
                 </div>
                 <div id="CardWrapper">
                     <div 
