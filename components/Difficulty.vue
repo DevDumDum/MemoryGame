@@ -1,7 +1,9 @@
 <template>
     <div id="mWrapper">
         <div id="MainMenu">
-            <img @click="$emit('pageS',0)" id="closeBtn" src="../assets/web/playisclicked/close.png">
+            <span id="menuBtn">
+                <img @click="$emit('pageS',0)" id="closeBtn" src="../assets/web/playisclicked/close.png">
+            </span>
             <div id="mContainer">
                 <div id="difficulty">
                     <div v-if="!gameStarted" id="btnWrapper">
@@ -10,11 +12,9 @@
                         <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="$emit('pageS',1)"><br>
                         <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
                     </div>
-            <div v-else>
-                <Card :items="shuffleItems"/>
-                
-            </div>
-            
+                    <div v-else class="pausewindow">
+                        <Card :items="shuffleItems"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,6 +25,7 @@
     export default {
         data(){
             return{
+                
                 items: [
                     {name: 'APPLE', image: 'APPLE.png'},
                     {name: 'BANANA', image: 'BANANA.png'},
@@ -61,3 +62,30 @@
         }
     }
 </script>
+
+<!-- <style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+</style> -->
