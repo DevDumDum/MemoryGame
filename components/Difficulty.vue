@@ -6,14 +6,18 @@
             </span>
             <div id="mContainer">
                 <div id="difficulty">
+                    <div v-if="isPlayerWon && !gameStarted">
+                        <h1>Time: {{ time }}</h1>
+                        <p>Score: {{ score }}</p>
+                    </div>
                     <div v-if="!gameStarted" id="btnWrapper">
-                        <img class="btn" src="../assets/web/playisclicked/EASY.png" @click="setDifficulty(2, 4)"><br>
-                        <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="setDifficulty(3, 6)"><br>
-                        <img class="btn" src="../assets/web/playisclicked/HARD.png" @click="setDifficulty(4, 8)"><br>
+                        <img class="btn" src="../assets/web/playisclicked/EASY.png" @click="setDifficulty(2, 4, 'easy')"><br>
+                        <img class="btn" src="../assets/web/playisclicked/MEDIUM.png" @click="setDifficulty(3, 6, 'medium')"><br>
+                        <img class="btn" src="../assets/web/playisclicked/HARD.png" @click="setDifficulty(4, 8, 'hard')"><br>
                         <img class="btn" src="../assets/web/HOME/PLAY.png" @click="$emit('user-name','')">
                     </div>
                     <div v-else class="pausewindow">
-                        <Card :items="shuffleItems"/>
+                        <Card :items="shuffleItems" @winner="playerWon"/>
                     </div>
                 </div>
             </div>
