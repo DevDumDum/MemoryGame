@@ -6,7 +6,6 @@ export default {
         return{
             easy: [
                 {name: 'APPLE', image: 'APPLE.png'},
-                
                 {name: 'BANANA', image: 'BANANA.png'},
                 {name: 'CHERRY', image: 'CHERRY.png'},
                 {name: 'GRAPES', image: 'GRAPES.png'},
@@ -102,6 +101,8 @@ export default {
                 }else{
                     if(foo < 0){
                         alert("Must be a positive number!");
+                    } else if(foo > this.easy.length){
+                        alert("Max Pairs is: "+this.easy.length);
                     }else{
                         this.setDifficulty(2, foo, 'easy');
                     }
