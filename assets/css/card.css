@@ -2,12 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: .5em;
+    width: 470px;
 
 }
 
 
 .card {
-    flex: 1 1 15em;
+    flex: 1 1 8em;
     height: 8em;
     width: 4em;
     display: flex;
