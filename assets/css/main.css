@@ -98,11 +98,11 @@ h1, h2 {
     /* background-size: 900px; */
     background-size: 100% 100%;
     width: 55%;
-     height: 55%;
     background-repeat: no-repeat;
     /* width: auto;
     height: auto; */
-    font-size: 15pxpx;
+    font-size: 15px;
+    padding: 5.5%;
     /* background-position: center top; */
     /* background-position-x: 50%;
     background-position-y: 50%; */

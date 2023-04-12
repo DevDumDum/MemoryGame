@@ -45,9 +45,9 @@
                     <div class="modal">
                         <div class="modal-content">
                             <div class="modal-image"> 
-                                <div class="resume">
+                                <div class="resume" style="width: 80%;margin: auto;">
                                     <div class="row">
-                                        <img src="../assets/web/levelcomplete/LEVEL COMPLETE.png">
+                                        <img src="../assets/web/levelcomplete/LEVEL COMPLETE.png" style="width: 100%">
                                     </div>
                                     <div class="row" id="timeH">
                                         <h1>Time: {{ time }}</h1>
@@ -55,9 +55,11 @@
                                     <div class="row" id="stepsH">
                                         <h1>Steps: {{ steps }}</h1>
                                     </div>
-                                    <div class="row" style="justify-content: left;">
-                                        <h1 style="margin: auto 20px auto 0;">Pairs:</h1>
-                                        <img v-for="i in pairs" :key="i" id="hStarWrapper" src="../assets/web/levelcomplete/STAR.png" :alt="i">
+                                    <div class="row" style="justify-content: left; padding-right: 10px;">
+                                        <h1 class="col" style="padding: 0 10px 0 0">Pairs:</h1>
+                                        <div class="col" style="width: 75%; display: contents;">
+                                            <img v-for="i in pairs" :key="i" id="hStarWrapper" src="../assets/web/levelcomplete/STAR.png" :alt="i">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-buttons">
