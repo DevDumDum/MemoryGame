@@ -1,0 +1,99 @@
+#CardWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+
+}
+
+
+.card {
+    flex: 1 1 15em;
+    height: 8em;
+    width: 4em;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.card .cardHidden {
+}
+
+.card .cardShown {
+    transform: rotateY(180deg);
+}
+
+.flipped .cardHidden {
+    transform: rotateY(180deg);
+}
+
+.flipped .cardShown {
+    transform: rotateY(0deg);
+}
+
+.matched .cardShown {
+    transform: rotateY(0deg);
+}
+
+.matched .cardHidden {
+    transform: rotateY(180deg);
+}
+
+.matched, .flipped{
+    cursor: no-drop;
+}
+
+.mainCard {
+    justify-content: center;
+    background-color: #f1f1f1;
+    border-radius: 1rem;
+    border: .3rem #464068 solid;
+    height: 100%;
+    width: 7rem;
+    transition: transform 0.7s ease-out;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+}
+
+.cardLogo {
+    margin:auto;
+    height: 50%;
+    width: 50%;
+    background-size: 100% 100%;
+}
+
+.cardHidden {
+    background-image: url("../cards/backcard/cardback.png");
+    background-size: 100% 100%;
+}
+
+.APPLE {
+    background-image: url("../cards/easy/APPLE.png");
+}
+
+.BANANA {
+    background-image: url("../cards/easy/BANANA.png");
+}
+
+.CHERRY {
+    background-image: url("../cards/easy/CHERRY.png");
+}
+
+.GRAPES {
+    background-image: url("../cards/easy/GRAPES.png");
+}
+
+.LEMON {
+    background-image: url("../cards/easy/LEMON.png");
+}
+.ORANGE {
+    background-image: url("../cards/easy/ORANGE.png");
+}
+
+.PEACH {
+    background-image: url("../cards/easy/PEACH.png");
+}
+.WATERMELON {
+    background-image: url("../cards/easy/WATERMELON.png");
+}

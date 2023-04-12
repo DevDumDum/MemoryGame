@@ -12,7 +12,8 @@ export default {
   data(){
     return{
       pageStatus: 0,
-      username: ''
+      username: '',
+      highScore: []
     }
   },
   methods:{
@@ -22,6 +23,10 @@ export default {
 
     setUserName(x){
       this.username = x;
+    },
+    setHighScore(x){
+      this.highScore.push(x);
+      console.log(this.highScore);
     }
   }
 }
@@ -29,8 +34,8 @@ export default {
 
 <template>
   <body>
-      <main-menu v-if="pageStatus == 0" :pagestatus="pageStatus" :userName="username" @pageS="changePage" @user-name="setUserName"/>
-      <Difficulty v-else-if="pageStatus == 1" @pageS="changePage"/>
-      <HighScore v-else-if="pageStatus == 2" @pageS="changePage"/>
+      <main-menu v-if="pageStatus == 0" :pagestatus="pageStatus" @mainhighscore="setHighScore" :userName="username" @pageS="changePage" @user-name="setUserName"/>
+      <Difficulty v-else-if="pageStatus == 1" @pageS="changePage" />
+      <HighScore v-else-if="pageStatus == 2" @pageS="changePage" :hs="highScore"/>
   </body>
 </template>
