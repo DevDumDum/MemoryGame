@@ -139,8 +139,7 @@ import HighScore from './HighScore.vue';
             }
         },
         mounted() {
-            this.timeGenerator();
-            console.log(this.gameStarted);
+            this.revealFirst();
         },
         methods: {
             // setDifficulty(row, col, difficulty){
@@ -163,6 +162,18 @@ import HighScore from './HighScore.vue';
                 this.gameStarted = false;
                 this.$emit("gStatus", this.gameStarted);
             },
+            revealFirst(){
+                let x = 0;
+                //this.toggleTimer();
+                for(x; x < this.items.length; x++){
+                    this.flippedCard.push(x)
+                }
+                setTimeout(() => {
+                    this.flippedCard = []
+                    //this.toggleTimer();
+                    this.timeGenerator();
+                }, 2000) 
+            },
             playAgain(){
                 this.pAgain = true;
                 this.$emit("pButton", this.pAgain);
@@ -179,13 +190,12 @@ import HighScore from './HighScore.vue';
 
             //============================================================
             showCard(value, index){
-                if(!this.flippedCard.includes(index) && !this.selectedCard.includes(value)){
-
+                if(!this.flippedCard.includes(index) && !this.selectedCard.includes(value) && this.flippedCard.length != 2){
                     if(!this.firstCard){
 
                         this.firstCard = value
                         this.flippedCard.push(index)
-                        console.log(this.steps);
+                        console.log(index);
                     }else if(!this.secondCard){
                         
                         this.secondCard = value

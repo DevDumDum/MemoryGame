@@ -39,7 +39,7 @@
     transform: rotateY(180deg);
 }
 
-.matched{
+.matched, .flipped{
     cursor: no-drop;
 }
 
@@ -51,7 +51,7 @@
     height: 100%;
     width: 7rem;
     transition: transform 0.7s ease-out;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     position: absolute;
     display: flex;
 }
