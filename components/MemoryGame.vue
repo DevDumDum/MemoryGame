@@ -34,7 +34,6 @@ export default {
 
 <template>
   <body>
-    {{ pageStatus }}
       <main-menu v-if="pageStatus === 0" :pagestatus="pageStatus" @mainhighscore="setHighScore" :userName="username" @pageS="changePage" @user-name="setUserName"/>
       <!-- <Difficulty v-else-if="pageStatus === 1" @pageS="changePage" /> -->
       <HighScore v-else-if="pageStatus === 2" @pageS="changePage" :hs="highScore"/>
