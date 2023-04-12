@@ -5,7 +5,7 @@
                 <img class="pausebutton" @click="toggleTimer" src="../assets/web/easy/PAUSE.png">
                 <div class="timer">
                     <p>Timer: {{ timer }}</p>
-                    <p>Score: {{ steps }}</p>
+                    <p>Steps: {{ steps }}</p>
                 </div>
                 <div id="CardWrapper">
                     <div 
@@ -46,9 +46,19 @@
                         <div class="modal-content">
                             <div class="modal-image"> 
                                 <div class="resume">
-                                    <img src="../assets/web/levelcomplete/LEVEL COMPLETE.png">
+                                    <div class="row">
+                                        <img src="../assets/web/levelcomplete/LEVEL COMPLETE.png">
+                                    </div>
+                                    <div class="row" id="timeH">
                                         <h1>Time: {{ time }}</h1>
-                                        <h1>Score: {{ steps }}</h1>
+                                    </div>
+                                    <div class="row" id="stepsH">
+                                        <h1>Steps: {{ steps }}</h1>
+                                    </div>
+                                    <div class="row" style="justify-content: left;">
+                                        <h1 style="margin: auto 20px auto 0;">Pairs:</h1>
+                                        <img v-for="i in pairs" :key="i" id="hStarWrapper" src="../assets/web/levelcomplete/STAR.png" :alt="i">
+                                    </div>
                                 </div>
                                 <div class="modal-buttons">
                                     <img class="back" src="../assets/web/gameover/EXIT.png" @click="exit()">
@@ -87,6 +97,7 @@ import HighScore from './HighScore.vue';
                 // Players time
                 playerTime: null,
                 pauseS: false,
+                pairs: null,
 
                 // Player score
                 score: 0,
@@ -133,7 +144,8 @@ import HighScore from './HighScore.vue';
                 upScore: {
                     name: null,
                     time: null,
-                    steps: null
+                    steps: null,
+                    pairs: null
                 }
         
             }
@@ -222,11 +234,12 @@ import HighScore from './HighScore.vue';
                             this.playerWon = true
                             clearInterval(this.clearTimer);
                             this.playerTime = this.timer
-
+                            this.pairs = (this.items.length)/2;
                             this.selectedCard = []
                             this.upScore.name = this.uName;
                             this.upScore.time = this.playerTime;
                             this.upScore.steps = this.steps;
+                            this.upScore.pairs = this.pairs;
 
                             this.$emit("highscore", this.upScore);
 

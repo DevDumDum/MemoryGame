@@ -28,6 +28,5 @@ export default {
 <template>
   <body>
       <MemoryGame/>
-      <HighScore/>
   </body>
 </template>
