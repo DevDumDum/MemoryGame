@@ -93,8 +93,21 @@ export default {
             this.inPlay = false;
             this.randomItems= [];
             this.shuffleItems= [];
+        },
+        custom(){
+            let foo = prompt('PLAY custom numbers of pairs');
+            if((foo != "") || (foo != null)){
+                if (isNaN(foo)){
+                    alert("Must be a whole number!");
+                }else{
+                    if(foo < 0){
+                        alert("Must be a positive number!");
+                    }else{
+                        this.setDifficulty(2, foo, 'easy');
+                    }
+                }
+            }
         }
-        
     }
 }
 </script>
@@ -117,7 +130,7 @@ export default {
 
                 <div v-if="(userName == '')" id="uInputWrapper">
                     <div id="uInputContainer">
-                        <h2>Username:</h2><input id="uInput" v-model="uname" type="text" required autocomplete="off"/>
+                        <h2>Username:</h2><input id="uInput" v-model="uname" type="text" autofocus required autocomplete="off" placeholder="username"/>
                     </div>
                     <div id="uInputButton">
                         <img src="../assets/web/firstpage/JOINBUTTON.png" id="join" @click="setUsername(uname)">
@@ -128,7 +141,8 @@ export default {
                     <div style="display: flex; justify-content: center;">
                         <div id="btnWrapper">
                             <!-- <img class="btn" src="../assets/web/home/PLAY.png" @click="$emit('pageS',1)"><br> -->
-                            <img class="btn" src="../assets/web/home/PLAY.png" @click="setDifficulty(4, 4, 'easy')"><br>
+                            <img class="btn" src="../assets/web/home/PLAY.png" @click="setDifficulty(4, 4, 'easy')">
+                            <img class="btn custom" src="../assets/web/levelcomplete/STAR.png" @click="custom()"><br>
                             <img class="btn" src="../assets/web/home/SCOREBOARD.png" @click="$emit('pageS',2)"><br>
                             <img class="btn" src="../assets/web/home/EXIT.png" @click="$emit('user-name','')">
                         </div>

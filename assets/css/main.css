@@ -321,14 +321,29 @@ h1, h2 {
     display: flex;
     justify-content: center;
   }
-  #difficulty img {
+  /* #difficulty img {
     margin: 5% 0;
     margin-top: 20%;
-  }
+  } */
 
 #CardWrapper .cardLogo{
   margin-top: 20%;
 }
+
+.custom {
+  position: absolute;
+  width: 3.5%;
+  padding: 0 !important;
+  opacity: .5;
+  margin-left: 20px;
+  min-width: 40px;
+}
+
+.custom:hover {
+  opacity: .8;
+  width: 3.8%;
+}
+
   @media screen and (max-width: 1000px){
     .mTitle{
         margin-top: 30%;

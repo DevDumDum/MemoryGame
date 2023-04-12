@@ -9,7 +9,7 @@
                         <h3>Name</h3>
                     </div>
                     <div class="col-4">
-                      <h3>Score</h3>
+                      <h3>Steps : Pairs</h3>
                     </div>
                     <div class="col-4">
                       <h3>Time</h3>
@@ -21,7 +21,7 @@
                         <h1>{{ score.name }}</h1>
                       </div>
                       <div class="col-4">
-                        <h1>{{ score.steps }}</h1>
+                        <h1>{{ score.steps }}&nbsp;&nbsp;:&nbsp;&nbsp;{{ score.pairs }}</h1>
                       </div>
                       <div class="col-4">
                         <h1>{{ score.time }}</h1>
