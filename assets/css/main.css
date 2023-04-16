@@ -10,7 +10,7 @@ body {
     background-color: rgb(25, 3, 47);
     color: white;
     font-weight: bold;
-    /* position: fixed; */
+    position: fixed;
 }
 
 h1, h2 {
@@ -195,7 +195,7 @@ h1, h2 {
     }
   
 #mContainer {
-    margin: 5% 10%;
+    margin: 5% 15%;
     text-align: center;
 }
 
