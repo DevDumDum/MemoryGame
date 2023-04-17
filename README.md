@@ -20,7 +20,7 @@ $ npm run dev
 ```
 
 ## Directory
-The working tree should look like this.<b4>
+The working tree should look like this.<br>
 ![My Image](./assets/resource/tree.png)
 
 ## Code for index.vue
