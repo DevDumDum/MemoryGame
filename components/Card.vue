@@ -1,6 +1,7 @@
 <template>
     <div>
         <button class="pausebutton" @click="toggleTimer">Pause Game</button>
+        
         <div class="timer">
             <p>Timer: {{ timer }}</p>
         </div>

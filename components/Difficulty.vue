@@ -2,6 +2,7 @@
     <div id="mContainer">
         <div id="difficulty">
             <div>
+                <!-- <img class="pausebutton" @click="toggleTimer" src="../assets/web/easy/PAUSE.png"> -->
                 <img class="pausebutton" @click="toggleTimer" src="../assets/web/easy/PAUSE.png">
                 <div class="timer">
                     <p>Timer: {{ timer }}</p>

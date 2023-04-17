@@ -114,6 +114,16 @@ h1, h2 {
     float: right;
     margin-top: -18% !important;
     width: 7%;
+
+    /* cursor: pointer;
+    transition-duration: 0.4s;
+    width: 3rem;
+    position: absolute;
+    right: 22.5rem;
+    bottom: 52.5rem; */
+    
+
+    
     }
 
     .pausebutton:hover{
