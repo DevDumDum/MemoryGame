@@ -1,10 +1,9 @@
 # MemoryGame
-![My Image](./assets/resource/1.png)
-
 A simple card flipping game where players search for the correct paired card by flipping one at a time. Players compete for the time and numbers of moves in completing the game.
 
-Game Demo -> https://www.youtube.com/watch?v=OhcTVYQ9g9w
+Game Video Demo -> https://www.youtube.com/watch?v=OhcTVYQ9g9w
 
+![My Image](./assets/resource/1.png)
 
 ## Logged in user
 displaying the Play, custom, Highscore, and Exit Button<br>
